@@ -33,4 +33,26 @@
      count: 7
  */
 
-// Write your JavaScript here
+const NUM_OF_LANGUAGES = 3;
+
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function fixText(givenText){
+	changeElementText("#givenText", givenText[0].join(" ") + "\n" + givenText[1].join(" ") + "\n" + givenText[2].join(" "));
+	let count = 0;
+	let result = [];
+
+	for (let i = 0; i < NUM_OF_LANGUAGES; ++i){
+		count += givenText[i].length;
+		if (i === 1){
+			result = result.concat(givenText[i].reverse());
+		} else {
+			result = result.concat(givenText[i]);
+		}
+	}
+	
+	changeElementText("#resultText", result.join(" "));
+	changeElementText("#count", count);
+}

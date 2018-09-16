@@ -26,4 +26,22 @@
 
 */
 
-// Write your JavaScript here
+const VALID_DENOMINATIONS = [5, 10, 20, 50, 100, 500, 1000];
+
+function changeElementText(element, answer) {
+    $(element).text(answer);
+}
+
+function countNotes(){
+	changeElementText("#noteList", Array.prototype.slice.call(arguments).join(", "));
+
+	let total = 0;
+	for (let i = 0; i< arguments.length; ++i){
+		if (VALID_DENOMINATIONS.indexOf(arguments[i]) > 0){
+			total += arguments[i];
+		} else {
+			break;
+		}
+	}
+	changeElementText("#total",total);
+}
